@@ -17,14 +17,14 @@ const (
 	endAtTmpl = `{{ if .EndAt }}{{ .EndAt.Format "2006-01-02 15:04:05" | printf "%-10s"}}` +
 		`{{ else }}{{ printf "%-10s" "0000-00-00 00:00:00" }}{{ end }}`
 
-	urlTmpl = `{{printf "%-60s" .URL}}`
+	descTmpl = `{{printf "%-60s" .Description}}`
 )
 
 var tableTmpl string = fmt.Sprintf(`
 %s{{range .}}
 | %s | %s | %s | %s |
 %s{{end}}
-`, lineTmpl, tagTmpl, startAtTmpl, endAtTmpl, urlTmpl, lineTmpl,
+`, lineTmpl, tagTmpl, startAtTmpl, endAtTmpl, descTmpl, lineTmpl,
 )
 
 type TaskView struct {

@@ -8,8 +8,8 @@ type ArgParser struct {
 	Update    *bool
 	Find      *bool
 
-	Tag *string
-	Url *string
+	Tag         *string
+	Description *string
 }
 
 func GetArgs() *ArgParser {
@@ -19,8 +19,8 @@ func GetArgs() *ArgParser {
 		Update:    flag.Bool("u", false, "Update a task"),
 		Find:      flag.Bool("f", false, "List not completed tasks or search for one by tag"),
 
-		Tag: flag.String("T", "", "Tag"),
-		Url: flag.String("U", "", "URL"),
+		Tag:         flag.String("T", "", "Tag"),
+		Description: flag.String("D", "", "Description"),
 	}
 	flag.Parse()
 	return argparser

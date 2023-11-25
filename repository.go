@@ -15,7 +15,7 @@ func NewTaskRepository(db *sqlx.DB) *TaskRepository {
 		CREATE TABLE IF NOT EXISTS tasks (
 			id INTEGER PRIMARY KEY AUTOINCREMENT,
 			tag TEXT NOT NULL,
-			url TEXT NOT NULL,
+			description TEXT NOT NULL,
 			start_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 			end_at DATETIME DEFAULT NULL
 		)
@@ -79,8 +79,8 @@ func (t TaskRepository) Create(task *Task) error {
 
 	if err := t.db.Get(
 		task,
-		"INSERT INTO tasks (tag, url) VALUES (?, ?) RETURNING id, start_at",
-		task.GetTag(), task.GetURL(),
+		"INSERT INTO tasks (tag, description) VALUES (?, ?) RETURNING id, start_at",
+		task.GetTag(), task.GetDescription(),
 	); err != nil {
 		return err
 	}

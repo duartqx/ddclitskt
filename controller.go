@@ -31,11 +31,11 @@ func (tc TaskController) Serve() error {
 }
 
 func (tc TaskController) insert() (err error) {
-	if *tc.args.Tag == "" || *tc.args.Url == "" {
+	if *tc.args.Tag == "" || *tc.args.Description == "" {
 		return fmt.Errorf("Tag or Url can't be empty")
 	}
 
-	task := &Task{Tag: *tc.args.Tag, URL: *tc.args.Url}
+	task := &Task{Tag: *tc.args.Tag, Description: *tc.args.Description}
 	err = tc.repository.Create(task)
 	if err != nil {
 		return err

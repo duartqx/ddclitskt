@@ -3,11 +3,11 @@ package main
 import "time"
 
 type Task struct {
-	Id      int64      `json:"id" db:"id"`
-	Tag     string     `json:"tag" db:"tag"`
-	URL     string     `json:"url" db:"url"`
-	StartAt *time.Time `json:"start_at" db:"start_at"`
-	EndAt   *time.Time `json:"end_at" db:"end_at"`
+	Id          int64      `json:"id" db:"id"`
+	Tag         string     `json:"tag" db:"tag"`
+	Description string     `json:"description" db:"description"`
+	StartAt     *time.Time `json:"start_at" db:"start_at"`
+	EndAt       *time.Time `json:"end_at" db:"end_at"`
 }
 
 func (t Task) GetId() int64 {
@@ -18,8 +18,8 @@ func (t Task) GetTag() string {
 	return t.Tag
 }
 
-func (t Task) GetURL() string {
-	return t.URL
+func (t Task) GetDescription() string {
+	return t.Description
 }
 
 func (t Task) GetStartAt() *time.Time {
@@ -40,8 +40,8 @@ func (t *Task) SetTag(tag string) *Task {
 	return t
 }
 
-func (t *Task) SetURL(url string) *Task {
-	t.URL = url
+func (t *Task) SetDescription(description string) *Task {
+	t.Description = description
 	return t
 }
 
